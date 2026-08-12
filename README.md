@@ -153,7 +153,7 @@ Covers login, RBAC denial, insufficient stock, challan confirm + cancel restock.
 
 1. New Web Service from this repo
 2. Root directory: `backend`
-3. Build: `npm install && npx prisma generate && npm run build`
+3. Build: `npm install --include=dev && npx prisma generate && npm run build`
 4. Start: `npx prisma migrate deploy && npm start`
 5. Set env: `DATABASE_URL`, `JWT_SECRET`, `CORS_ORIGIN` (your Vercel URL), `NODE_ENV=production`
 

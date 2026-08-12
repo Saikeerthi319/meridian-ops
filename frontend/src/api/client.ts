@@ -1,12 +1,20 @@
 import axios from 'axios';
 import type { ApiError } from './types';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  (import.meta.env.PROD
+    ? 'https://meridian-ops.onrender.com/api'
+    : 'http://localhost:4000/api');
 
 export const api = axios.create({
   baseURL: API_URL,
   headers: { 'Content-Type': 'application/json' },
 });
+
+if (import.meta.env.DEV) {
+  console.info('[api] baseURL =', API_URL);
+}
 
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
